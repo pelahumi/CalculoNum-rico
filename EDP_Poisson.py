@@ -54,4 +54,5 @@ ax.set_zlabel('Z')
 ax.set_title('Superficie 3D')
 
 # Mostrar el gráfico
+plt.savefig('img/Poisson.png')
 plt.show()
