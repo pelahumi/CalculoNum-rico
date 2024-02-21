@@ -1,1 +1,1 @@
-# CalculoNum-rico
+# CalculoNumerico
