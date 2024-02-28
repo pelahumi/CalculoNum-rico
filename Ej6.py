@@ -1,11 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+
+
+#Lambda
+l = 300
 
 a = 0
-b = np.pi
+b = 1
 c = 0
-d = np.pi
+d = 1
 N = 40
 M = 40
 h = (b - a) / N
@@ -25,14 +28,14 @@ for i in range(1, N):
     w[i][M] = 0
 
 for j in range(1, M):
-    w[0][j] = c + j * k
-    w[N][j] = c + j * k
+    w[0][j] = 0
+    w[N][j] = 1
 
 for p in range(100):
     for i in range(1, N):
         for j in range(1, M):
             w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (
-                        h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
+                        h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2) + (h*k*l)**2)
 
 # Definir los puntos x, y, z para la superficie
 x = np.linspace(a, b, M + 1)
