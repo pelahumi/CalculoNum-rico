@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 a = 0
-b = 1
+b = np.pi
 c = 0
-d = 1
+d = np.pi
 N = 40
 M = 40
 h = (b - a) / N
@@ -21,17 +21,18 @@ for i in range(N):
 
 # Aquí introducimos los datos de contorno
 for i in range(1, N):
-    w[0][i] = 0
-    w[M][i] = (a + i*h)**2
+    w[i][0] = 0
+    w[i][M] = 0
 
 for j in range(1, M):
-    w[j][0] = 1 - (c + j*k)**2
-    w[j][N] = 1
+    w[0][j] = c + j * k
+    w[N][j] = c + j * k
 
 for p in range(100):
     for i in range(1, N):
         for j in range(1, M):
-            w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
+            w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (
+                        h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
 
 # Definir los puntos x, y, z para la superficie
 x = np.linspace(a, b, M + 1)
@@ -53,5 +54,5 @@ ax.set_zlabel('Z')
 ax.set_title('Superficie 3D')
 
 # Mostrar el gráfico
-plt.savefig('img/Poisson2.png')
+plt.savefig('img/Poisson.png')
 plt.show()
