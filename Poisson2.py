@@ -28,7 +28,7 @@ for j in range(1, M):
     w[0][j] = 1-j**2
     w[N][j] = 1
 
-for k in range(100):
+for p in range(100):
     for i in range(1, N):
         for j in range(1, M):
             w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
