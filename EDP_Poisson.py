@@ -22,11 +22,11 @@ for i in range(N):
 # Aquí introducimos los datos de contorno
 for i in range(1, N):
     w[i][0] = 0
-    w[i][M] = 0
+    w[i][M] = 1
 
 for j in range(1, M):
     w[0][j] = 0
-    w[N][j] = 1
+    w[N][j] = 0
 
 for p in range(100):
     for i in range(1, N):
