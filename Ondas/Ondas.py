@@ -2,20 +2,22 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 a = 0
-b =
+b = 5
 c = 0
-d = 
-p = 
+d = 10
+v = 5
 
-M = 100
-N = 100
+M = 400
+N = 40
 h = (b-a)/N
 k = (d-c)/M
+
+p = v*k/h
 
 w = [[0 for i in range(N + 1)] for j in range(M + 1)]
 
 def f(x):
-    return 0
+    return x*(b-x)
 
 def g(x):
     return 0
@@ -26,7 +28,7 @@ for j in range(1, M):
 
 for i in range(1, N):
     w[0][i] = f(i * h)
-    w[M][i] = w[0][i] + k * g(i * h)
+    w[1][i] = w[0][i] + k * g(i * h)
 
 for j in range (1, M):
     for i in range(1,N):
