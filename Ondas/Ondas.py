@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 a = 0
-b = 5
+b = 6
 c = 0
-d = 10
-v = 1
+d = 24
+v = 0.5
 
-M = 400
-N = 40
+M = 2400
+N = 600
 h = (b-a)/N
 k = (d-c)/M
 
@@ -17,17 +17,17 @@ p = v*k/h
 w = [[0 for i in range(N + 1)] for j in range(M + 1)]
 
 def f(x):
-    return x*(b-x)
+    return 0
 
 def g(x):
     return 0
 
 for j in range(1, M):
-    w[j][0] = 0
-    w[j][N] = 0 
+    w[j][0] = 3*np.sin(k*j)
+    w[j][N] = 0
 
 for i in range(1, N):
-    w[0][i] = f(i * h)
+    w[0][i] = f(i * h) 
     w[1][i] = w[0][i] + k * g(i * h)
 
 for j in range (1, M):
@@ -49,6 +49,6 @@ ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 ax.set_title('Superficie 3D')
 
-plt.savefig('img/Ondas.png')
+#plt.savefig('img/Ondas.png')
 
 plt.show()
