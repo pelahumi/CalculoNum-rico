@@ -11,17 +11,14 @@ N = 40
 h = (b-a)/N
 k = (d-c)/M
 
-v = 2 #Conductividad térmica
+v = 0.4 #Conductividad térmica
 
 lamda = v**2 * k/h**2
 
 w = np.zeros((M+1, N+1))
 
 def f(x):
-    if 0<=x<=b/2:
-        return 1
-    elif b/2<x<=b:
-        return 0
+    return np.exp(-(x - 2.5)**2)
 
 def g(x):
     return 0
@@ -37,7 +34,7 @@ for i in range(1, N):
 for p in range(100):
     for j in range (1, M):
         for i in range(1,N):
-            w[j][i] = (lamda*(w[j][i+1] + w[j][i-1]) + w[j-1][i])/(1 + 2*lamda)
+            w[j][i] = (k*w[j+1][i] + k*w[j-1][i] + w[j][i-1] + h**3*i*w[j][i-1])/(2*k + h**2 + h**3*i - k*h**2)
 
 x = np.linspace(a, b, N+1)
 y = np.linspace(c, d, M+1)
