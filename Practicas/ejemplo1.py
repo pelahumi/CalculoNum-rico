@@ -2,39 +2,45 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 a = 0
-b = 1
+b = 5
 c = 0
-d = 1
+d = 10
+
+M = 400
 N = 40
-M = 40
+
 h = (b - a) / N
 k = (d - c) / M
-w = [[0 for i in range(N + 1)] for j in range(M + 1)]
 
-def f(i, j):
+w = np.zeros((M+1, N+1))
+
+v = 0.8
+
+def f(x):
+    if 0<=x<=b/2:
+        return 1
+    elif b/2<x<=b:
+        return 0
+
+def g(x):
     return 0
 
-for i in range(N):
-    for j in range(M):
-        w[i][j] = 0
-
 # Aquí introducimos los datos de contorno
+for j in range(1, M):
+    w[j][0] = 0
+    w[j][N] = 0
+
 for i in range(1, N):
-    w[0][i] = 0
-    w[M][i] = (a + i*h)**2
+    w[0][i] = f(i * h) 
+    w[1][i] = w[0][i] + k * g(i * h)
 
 for j in range(1, M):
-    w[j][0] = 1 - (c + j*k)**2
-    w[j][N] = 1
-
-for p in range(100):
     for i in range(1, N):
-        for j in range(1, M):
-            w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
+        w[j+1][i] = 2 * (1 - (v**2 * k**2)/h**2)*w[j][i] + (v**2 * k**2)/h**2 * (w[j][i+1] + w[j][i-1]) - w[j-1][i]
 
 # Definir los puntos x, y, z para la superficie
-x = np.linspace(a, b, M + 1)
-y = np.linspace(c, d, N + 1)
+x = np.linspace(a, b, N + 1)
+y = np.linspace(c, d, M + 1)
 x, y = np.meshgrid(x, y)
 z = np.array(w)
 
@@ -52,5 +58,5 @@ ax.set_zlabel('Z')
 ax.set_title('Superficie 3D')
 
 # Mostrar el gráfico
-plt.savefig('img/Poisson2.png')
 plt.show()
+

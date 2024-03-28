@@ -15,10 +15,6 @@ w = [[0 for i in range(N + 1)] for j in range(M + 1)]
 def f(i, j):
     return 0
 
-for i in range(N):
-    for j in range(M):
-        w[i][j] = 0
-
 # Aquí introducimos los datos de contorno
 for i in range(1, N):
     w[i][0] = 0
@@ -31,8 +27,7 @@ for j in range(1, M):
 for p in range(100):
     for i in range(1, N):
         for j in range(1, M):
-            w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (
-                        h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
+            w[i][j] = (k ** 2 * (w[i + 1][j] + w[i - 1][j]) + h ** 2 * (w[i][j + 1] + w[i][j - 1]) - (h * k) ** 2 * f(i, j)) / (2 * (h ** 2 + k ** 2))
 
 # Definir los puntos x, y, z para la superficie
 x = np.linspace(a, b, M + 1)
