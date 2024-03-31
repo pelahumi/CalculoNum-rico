@@ -15,25 +15,23 @@ N = 40
 h = (b - a) / N
 k = (d - c) / M
 
-lamda = 1
-
 w = np.zeros((M+1, N+1))
 
 def f(i, j):
-    return np.sin(np.pi * i * h) * np.sin(np.pi * j * k)
+    return 0
 
 def g(i, j):
     return 0
 
-# Aquí introducimos los datos de contorno u(i, y)
+# Aquí introducimos los datos de contorno u(x, j)
 for i in range(1, N):
     w[0][i] = 0
-    w[M][i] = 1
+    w[M][i] = 0
 
-# Aquí introducimos los datos de contorno u(x, j)
+# Aquí introducimos los datos de contorno u(i, y)
 for j in range(1, M):
     w[j][0] = 0
-    w[j][N] = 0
+    w[j][N] = 1
 
 
 # Método de diferencias finitas
@@ -41,7 +39,7 @@ for p in range(100):
     for j in range(1, M):
         for i in range(1, N):
             w[j][i] = (k**2 * (w[j][i+1] + w[j][i-1]) + h**2 * (w[j+1][i] + w[j-1][i]) - (
-                        h * k) ** 2 * f(i, j))/(2*k**2 + 2*h**2 - lamda**2 * h**2 * k**2)
+                        h * k) ** 2 * f(i, j))/(2*k**2 + 2*h**2 - 2)
 
 # Definir los puntos x, y, z para la superficie
 x = np.linspace(a, b, N + 1)

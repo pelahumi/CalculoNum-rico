@@ -8,18 +8,18 @@ import matplotlib.pyplot as plt
 #En ondas a y c suelen ser 0
 
 a = 0
-b = 5
+b = 6
 c = 0
-d = 10
+d = 24
 
 #Determinamos el número de intervalos
 
-M = 400
-N = 40
+M = 2400
+N = 600
 h = (b-a)/N
 k = (d-c)/M
 
-#Determinamos p
+#Determinamos p y la velocidad de propagación
 
 v =0.5
 p = v*k/h
@@ -35,10 +35,7 @@ w = [[0 for i in range(N + 1)] for j in range(M + 1)]
 #Determinamos las funciones:
 
 def f(x):
-    if x <= b/2:
-        return x
-    else:
-        return b-x
+    return 0
 
 def g(x):
     return 0
@@ -47,7 +44,7 @@ def g(x):
 #u(i, y)
 
 for j in range(1, M):
-    w[j][0] = 0
+    w[j][0] = 3*np.cos(k*j)
     w[j][N] = 0
 
 #u(x, j)
@@ -75,7 +72,7 @@ ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(x, y, z, cmap='viridis')
 
 ax.set_xlabel('X')
-ax.set_ylabel('Y')
+ax.set_ylabel('t')
 ax.set_zlabel('Z')
 ax.set_title('Superficie 3D')
 
