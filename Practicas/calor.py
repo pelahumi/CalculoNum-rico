@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 #Determinamos nuestra región R:
 
 a = 0
-b = 5 #Longitud de la barra
+b = 15 #Longitud de la barra
 c = 0
 d = 5
 
@@ -23,7 +23,7 @@ k = d/M
 
 #Determinamos la conductividad térmica
 
-#alpha = 0.5
+
 
 #Determinamos la matriz w
 
@@ -32,7 +32,7 @@ w = np.zeros((M+1, N+1))
 #Determinamos las funciones:
 
 def f(x):
-    return np.exp(-(x-2.5)**2)
+    return np.exp(-(x-b/2)**2)
 
 def g(x):
     return 0
@@ -54,11 +54,13 @@ for i in range(1, N):
     w[0][i] = f(i * h) 
     w[1][i] = w[0][i] + k * g(i * h)
 
+alpha = 1/(1-i*h)
+
 #Aplicamos diferencias finitas
 
 for j in range (1, M):
     for i in range(1,N):
-        w[j+1][i] = k/(h**2 * (1 + h*i))*(w[j][i+1] - 2*w[j][i] + w[j][i-1]) + w[j][i]
+        w[j+1][i] = k*alpha/h**2*(w[j][i+1] - 2*w[j][i] + w[j][i-1]) + w[j][i]
 
 x = np.linspace(a, b, N+1)
 y = np.linspace(c, d, M+1)
