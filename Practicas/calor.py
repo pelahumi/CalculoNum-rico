@@ -7,32 +7,32 @@ import matplotlib.pyplot as plt
 #Determinamos nuestra región R:
 
 a = 0
-b =  #Longitud de la barra
+b = 5 #Longitud de la barra
 c = 0
-d = 
+d = 5
 
 #Determinamos el número de subdivisiones
 
-M = 
-N = 
+M = 400
+N = 40
 
 #Determinamos los pasos
 
-h = b/M
-k = d/N
+h = b/N
+k = d/M
 
 #Determinamos la conductividad térmica
 
-alpha = 
+#alpha = 0.5
 
 #Determinamos la matriz w
 
-w = [[0 for i in range(N + 1)] for j in range(M + 1)]
+w = np.zeros((M+1, N+1))
 
 #Determinamos las funciones:
 
 def f(x):
-    return 0
+    return np.exp(-(x-2.5)**2)
 
 def g(x):
     return 0
@@ -42,7 +42,7 @@ def g(x):
 #t = k*i
 
 #Determinamos las condiciones de contorno
-#u(i, y)
+#u(i, t)
 
 for j in range(1, M):
     w[j][0] = 0
@@ -58,7 +58,7 @@ for i in range(1, N):
 
 for j in range (1, M):
     for i in range(1,N):
-        w[j+1][i] = (1 - (2 * k * alpha**2)/h**2) * w[j][i] + (k * alpha**2) / h**2 * (w[j][i+1] + w[j][i-1])
+        w[j+1][i] = k/(h**2 * (1 + h*i))*(w[j][i+1] - 2*w[j][i] + w[j][i-1]) + w[j][i]
 
 x = np.linspace(a, b, N+1)
 y = np.linspace(c, d, M+1)
