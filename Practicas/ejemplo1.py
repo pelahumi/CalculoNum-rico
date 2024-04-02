@@ -14,13 +14,8 @@ k = (d - c) / M
 
 w = np.zeros((M+1, N+1))
 
-v = 0.8
-
 def f(x):
-    if 0<=x<=b/2:
-        return 1
-    elif b/2<x<=b:
-        return 0
+    return np.exp(-(x-2.5)**2)
 
 def g(x):
     return 0
@@ -34,9 +29,10 @@ for i in range(1, N):
     w[0][i] = f(i * h) 
     w[1][i] = w[0][i] + k * g(i * h)
 
-for j in range(1, M):
-    for i in range(1, N):
-        w[j+1][i] = 2 * (1 - (v**2 * k**2)/h**2)*w[j][i] + (v**2 * k**2)/h**2 * (w[j][i+1] + w[j][i-1]) - w[j-1][i]
+for p in range(100):
+    for j in range (1, M):
+        for i in range(1,N):
+            w[j][i] = (k*(w[j][i+1] + w[j][i-1]) + h**2 * (1 + i*h) * w[j-1][i]) / (2 * k + h**2 * (1 + h*i) - (1 + h*i) * h**2 * k)
 
 # Definir los puntos x, y, z para la superficie
 x = np.linspace(a, b, N + 1)

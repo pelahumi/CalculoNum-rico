@@ -23,6 +23,7 @@ def f(i, j):
 def g(i, j):
     return 0
 
+# Como es un problema extremal, se necesitan 4 datos de controno (dos para cada eje)
 # Aquí introducimos los datos de contorno u(x, j)
 for i in range(1, N):
     w[0][i] = 0

@@ -41,6 +41,7 @@ def g(x):
     return 0
 
 #Determinamos las condiciones de contorno
+# Como es un problema de evolución, no se da un dato de contorno que limite el tiempo
 #u(i, y)
 
 for j in range(1, M):
