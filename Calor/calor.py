@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 a = 0
 b = 5
 c = 0
-d = 5
+d = 10
 
 M = 400
 N = 40
@@ -18,7 +18,10 @@ v = 0.3 #Conductividad térmica
 w = np.zeros((M+1, N+1))
 
 def f(x):
-    return np.exp(-(x-2.5)**2)
+    if 0 <= x <=b/2:
+        return 1
+    elif b/2 < x <= b:
+        return 0
 
 def g(x):
     return 0
@@ -34,7 +37,7 @@ for i in range(1, N):
 for p in range(100):
     for j in range (1, M):
         for i in range(1,N):
-            w[j+1][i] = k/(h**2 * (1 + h*i))*(w[j][i+1] - 2*w[j][i] + w[j][i-1]) + w[j][i]
+            w[j+1][i] = (1- 2*v*k/h**2)*w[j][i] + v*k/h**2 * (w[j][i+1] + w[j][i-1])
 
 x = np.linspace(a, b, N+1)
 y = np.linspace(c, d, M+1)

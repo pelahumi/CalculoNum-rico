@@ -9,6 +9,8 @@ b = 1
 c = 0
 d = 1
 
+lamda = 20
+
 M = 40
 N = 40
 
@@ -40,7 +42,7 @@ for p in range(100):
     for j in range(1, M):
         for i in range(1, N):
             w[j][i] = (k**2 * (w[j][i+1] + w[j][i-1]) + h**2 * (w[j+1][i] + w[j-1][i]) - (
-                        h * k) ** 2 * f(i, j))/(2*k**2 + 2*h**2 - 2)
+                        h * k) ** 2 * f(i, j))/(2*k**2 + 2*h**2 - h**2 * k**2 * lamda**2)
 
 # Definir los puntos x, y, z para la superficie
 x = np.linspace(a, b, N + 1)

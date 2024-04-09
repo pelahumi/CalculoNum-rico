@@ -1,0 +1,11 @@
+1) Que tipo de EDP es?
+
+Se trata de una EDP elíptica ya que: B - 4AC = 4xy --> como estamos en la región R:{0<x<1; -1<y<0} siempre es < 0.
+
+2) Que método habeis empleado?
+
+Para resolver la EDP utilizamos el método de Gauss-Seidel.
+
+3)Explicar brevemente por qué corresponde la gráfica con la EDP?
+
+Vemos que es una EDP adaptada a las condiciones de contorno

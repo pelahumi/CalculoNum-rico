@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 #En ondas a y c suelen ser 0
 
 a = 0
-b = 5
+b = 4
 c = 0
 d = 10
 
@@ -21,7 +21,7 @@ k = (d-c)/M
 
 #Determinamos p
 
-v =0.5
+v = 1/3
 p = v*k/h
 
 #Determinamos la matriz w
@@ -35,10 +35,7 @@ w = [[0 for i in range(N + 1)] for j in range(M + 1)]
 #Determinamos las funciones:
 
 def f(x):
-    if x <= b/2:
-        return x
-    else:
-        return b-x
+    return 2*np.sin(np.pi * x)
 
 def g(x):
     return 0
