@@ -8,6 +8,10 @@ Igual que en los casos anteriores se trata de una EDP hiperbólica, ya que al ca
 
 En este caso también usamos el método de diferencias finitas para resolver la EDP. Además, nos encontramos en un problema de evolución, por lo que calculamos los puntos de la malla despejando w[i][j+1], es decir, el punto en el instante posterior.
 
+Datos introducidos:
+    - M = 400
+    - N = 40
+
 3) Explicar brevemente por qué la gráfica se corresponde con la EDP
 
 En este ejercicio las condiciones de contorno y condición inicial son las mismas que en los ejercicios anteriores. Además también coinciden las curvas características y el valor de v = 0.3

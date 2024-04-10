@@ -8,6 +8,10 @@ Se trata de una EDP hiperbólica, ya que al calcular Δ = B^2 - 4AC, obtenemos �
 
 Para resolver la EDP usamos el método de diferencias finitas. Además, nos encontramos en un problema de evolución, por lo que calculamos los puntos de la malla despejando w[i][j+1], es decir, el punto en el instante posterior.
 
+Datos introducidos:
+    - M = 400
+    - N = 40
+
 3) Explicar brevemente por qué la gráfica se corresponde con la EDP
 
 Podemos observar que las condiciones de contorno están determinadas correctamente, puesto que los extremos de la cuerda se encuentran fijos ya que los valores en dichos extremos son siempre nulos. Además, podemos ver que la condición inicial también está bien definida ya que es una parábola invertida en el instante inicial.
