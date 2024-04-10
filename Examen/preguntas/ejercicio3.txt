@@ -1,0 +1,17 @@
+Preguntas ejercicio 3:
+
+1) Qué tipo de EDP es?
+
+Igual que en los casos anteriores se trata de una EDP hiperbólica, ya que al calcular Δ = B^2 - 4AC, obtenemos Δ = 4/v^2, que es mayor que 0 siempre, para todo v. 
+
+2) Qué método habéis empleado?
+
+En este caso también usamos el método de diferencias finitas para resolver la EDP. Además, nos encontramos en un problema de evolución, por lo que calculamos los puntos de la malla despejando w[i][j+1], es decir, el punto en el instante posterior.
+
+3) Explicar brevemente por qué la gráfica se corresponde con la EDP
+
+En este ejercicio las condiciones de contorno y condición inicial son las mismas que en los ejercicios anteriores. Además también coinciden las curvas características y el valor de v = 0.3
+
+Sin embargo, en este ejercicio añadimos el término -w[i][j] o -u, que hará que la solución se comporte de una manera parecida (vemos claramente que las ondas se propagan siguiendo las curvas características), pero no igual. 
+
+Podemos ver que las ondas se van anulando, y una vez que se anulan el comportamiento es igual a las anteriores pero invertido, se restan hasta crear el pico mínimo, y a partir de ese punto se reflectan.

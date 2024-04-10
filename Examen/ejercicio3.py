@@ -57,6 +57,6 @@ ax.set_zlabel('Z')
 ax.set_title('Superficie 3D')
 
 #Guardamos la imagen
-plt.savefig('Examen/img/Ejercicio2.png')
+#plt.savefig('Examen/img/Ejercicio2.png')
 
 plt.show()
