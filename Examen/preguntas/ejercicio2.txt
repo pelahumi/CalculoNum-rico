@@ -12,4 +12,4 @@ En este caso también usamos el método de diferencias finitas para resolver la 
 
 Podemos observar que las condiciones de contorno y la condición inicial corresponden con las del primer ejercicio. Como explicamos en el apartado anterior la propagación de las ondas depende del valor de v.
 
-En este ejercicio v = 0.3, y vemos que las ondas llegan a unirse en el pico de la gráfica y después se reflectan.
+En este ejercicio v = 0.3, y vemos que las ondas llegan a unirse en el pico de la gráfica y después se reflectan y se vuelven a separar.
