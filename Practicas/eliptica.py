@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # No es un problema de evolución --> se aplica el método de Gauss-Seidel
+# No tiene curvas características
 
 a = 0
 b = 1 #Longitud de la barra

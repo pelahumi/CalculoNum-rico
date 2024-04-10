@@ -21,7 +21,7 @@ k = (d-c)/M
 
 #Determinamos p y la velocidad de propagación
 
-v =0.5
+v =1
 p = v*k/h
 
 #Determinamos la matriz w

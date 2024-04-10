@@ -12,7 +12,7 @@ N = 40
 h = (b-a)/N
 k = (d-c)/M
 
-w = [[0 for i in range(M + 1)] for j in range(N + 1)]
+w = np.zeros((N+1, M+1))
 
 def f(i, j):
     return 0
@@ -29,22 +29,22 @@ for j in range(1, M):
 for p in range(100):
     for i in range(1, N):
         for j in range(1, M):
-            w[j][i] = (((k**2 * (c + j*k)) * (w[j][i+1] + w[j][i-1])) - ((i*h * h**2) * (w[j+1][i] + w[j-1][i]))) / (2*(k**2 * (c + j*k) - i*h * h**2))
+            #w[j][i] = (((k**2 * (c + j*k)) * (w[j][i+1] + w[j][i-1])) - ((i*h * h**2) * (w[j+1][i] + w[j-1][i]))) / (2*(k**2 * (c + j*k) - i*h * h**2))
+            w[i][j]= (i*h**3*(w[i][j+1]+w[i][j-1])-(-1+j*k)*k**2*(w[i+1][j]+w[i-1][j]))/(2*(k**2-k**3*j+h**3*i))
 
 
-x = np.linspace(a, b, M + 1)
-y = np.linspace(c, d, N + 1)
-x, y = np.meshgrid(y, x)
-z = np.array(w)
+x = np.linspace(a, b, N+1) 
+t = np.linspace(c, d, M+1) 
+X, T = np.meshgrid(x, t)
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-ax.plot_surface(x, y, z, cmap='viridis')
+surf = ax.plot_surface(X, T, w.T, cmap='viridis', edgecolor='none')  
+ax.set_title('Superficie 3D de la Matriz w')
+ax.set_xlabel('X')
+ax.set_ylabel('T')
+ax.set_zlabel('w')
 
-ax.set_xlabel('Y')
-ax.set_ylabel('X')
-ax.set_zlabel('Z')
-ax.set_title('Superficie 3D')
-
+fig.colorbar(surf)
 plt.show()
